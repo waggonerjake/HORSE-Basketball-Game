@@ -1,0 +1,22 @@
+# Honor Pledge:
+#
+# I pledge that I have neither given nor
+# received any help on this assignment.
+#
+# jwaggon
+
+horseGameCPP: Player.o Game.o
+	g++ -o horseGameCPP Player.o Game.o
+
+
+Player.o: Player.cpp
+	g++ -c Player.cpp -o Player.o
+
+Game.o: Game.cpp
+	g++ -c Game.cpp -o Game.o
+val: horseGameCPP
+	valgrind --leak-check=full --log-file=valgrind.txt ./horseGameCPP
+
+clean:
+	rm -f *.o
+
